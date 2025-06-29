@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: 'Urbanist', sans-serif;
+}
+
+.cursor-point{
+cursor: pointer;
+}
+
+@keyframes spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.spin-animation{
+  animation: spin 1s linear infinite;
+}
+
+
+.invoiceformm input:focus,
+.invoiceformm text area:focus,
+.invoiceformm select:focus{
+box-shadow: none !important;
+}
