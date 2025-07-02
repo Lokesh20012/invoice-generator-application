@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MenuBar from "./components/MenuBar";
 import{Toaster} from "react-hot-toast"
+
+
 const App =() =>{
     return (
     <BrowserRouter>
