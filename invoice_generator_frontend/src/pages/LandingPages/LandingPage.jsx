@@ -111,6 +111,26 @@ const LandingPage = () => {
             </div>  
         </section>
 
+
+
+         <footer className="py-5 bg-dark text-white-50">
+                <div className="container text-center">
+                    <Logo />
+                    <p className="text-white fw-bold mt-2">QuickInvoice</p>
+                    <p className="mb-0">
+                        &copy; {new Date().getFullYear()} QuickInvoice. All Rights Reserved.
+                    </p>
+                    <p className="mb-0 small">
+                        Crafted with <i className="bi bi-heart-fill text-danger"></i> for freelancers and small businesses.
+                    </p>
+                    <p className="mt-2">
+                        {/* Placeholder social media links */}
+                        <a href="#" className="text-white-50 me-2"><i className="bi bi-twitter-x"></i></a>
+                        <a href="#" className="text-white-50 me-2"><i className="bi bi-facebook"></i></a>
+                        <a href="#" className="text-white-50"><i className="bi bi-linkedin"></i></a>
+                    </p>
+                </div>
+            </footer>
     </>
     )
 }
