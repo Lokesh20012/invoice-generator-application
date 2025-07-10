@@ -1,5 +1,6 @@
 import "./LandingPage.css";
-
+import Logo from "../../components/logo";
+import { assets } from "../../assets/assets.js";
 const LandingPage = () => {
     return (
     <>
@@ -111,7 +112,138 @@ const LandingPage = () => {
             </div>  
         </section>
 
-    </>
+        {/* Features Section: Highlights key benefits with images and text */}
+                    <section id="features" className="py-5">
+                        <div className="container">
+                            <h2 className="text-center mb-5 display-5 fw-bold">Why Choose QuickInvoice?</h2>
+                            {/* Feature 1 */}
+                            <div className="row align-items-center gy-4">
+                                <div className="col-md-6">
+                                    <img
+                                        src={assets.landing1}
+                                        className="img-fluid rounded shadow-lg"
+                                        alt="Invoice Customization"
+                                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/E0E0E0/000000?text=Error'; }}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <h3 className="fw-bold mx-2">Easy to fill invoice details</h3>
+                                    <p className="text-muted lead fs-6 mx-2">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                    <ul className="list-unstyled text-muted">
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Curated list of templates from gallery.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Add your logo and invoice details.</li>
+                                        <li><i className="bi bi-check-circle-fill text-primary me-2"></i>Tailor fields to your needs.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {/* Feature 2 */}
+                            <div className="row align-items-center gy-4 mt-5 flex-row-reverse"> {/* flex-row-reverse alternates image/text */}
+                                <div className="col-md-6">
+                                    <img
+                                        src={assets.landing2}
+                                        className="img-fluid rounded shadow-lg"
+                                        alt="Time Saving"
+                                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/E0E0E0/000000?text=Error'; }}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <h3 className="fw-bold mx-2">Beautiful Dashboard</h3>
+                                    <p className="text-muted lead fs-6 mx-2">
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <ul className="list-unstyled text-muted">
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>View the previous invoices.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Your saved invoices with thumbnail.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Reuse one or more invoices.</li>
+                                        <li><i className="bi bi-check-circle-fill text-primary me-2"></i>Track the invoices.</li>
+        
+                                    </ul>
+                                </div>
+                            </div>
+                            {/* Feature 3 */}
+                            <div className="row align-items-center gy-4 mt-5">
+                                <div className="col-md-6">
+                                    <img
+                                        src={assets.landing3}
+                                        className="img-fluid rounded shadow-lg"
+                                        alt="Invoice Customization"
+                                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/E0E0E0/000000?text=Error'; }}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <h3 className="fw-bold mx-2">Invoice Preview with Action Buttons</h3>
+                                    <p className="text-muted lead fs-6 mx-2">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                    <ul className="list-unstyled text-muted">
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Live preview.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Switch between multiple invoices.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>One click to Save, Download and Delete invoices.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {/* Feature 4 */}
+                            <div className="row align-items-center gy-4 mt-5 flex-row-reverse"> {/* flex-row-reverse alternates image/text */}
+                                <div className="col-md-6">
+                                    <img
+                                        src={assets.landing4}
+                                        className="img-fluid rounded shadow-lg"
+                                        alt="Time Saving"
+                                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/E0E0E0/000000?text=Error'; }}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <h3 className="fw-bold mx-2">Send invoices instantly</h3>
+                                    <p className="text-muted lead fs-6 mx-2">
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <ul className="list-unstyled text-muted">
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Send invoices instantly without leaving the application.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>One click to send invoices.</li>
+                                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i>Send unlimited invoices.</li>
+        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        
+                    {/* Call to Action Section: Final prompt for users to start */}
+                    <section id="generate-invoice" className="py-5 text-center bg-primary text-white">
+                        <div className="container">
+                            <h2 className="display-5 fw-bold mb-3">Ready to Streamline Your Invoicing?</h2>
+                            <p className="lead mb-4 mx-auto" style={{ maxWidth: '600px' }}>
+                                Join thousands of freelancers and small businesses who trust QuickInvoice.
+                                Start creating professional invoices today – its fast, easy, and effective!
+                            </p>
+                            <button className="btn btn-lg btn-warning fw-bold rounded-pill px-5 py-3">
+                                Start Generating Invoices Now
+                            </button>
+                            <p className="mt-3 small">
+                                (This will lead to the invoice generation interface)
+                            </p>
+                        </div>
+                    </section>
+        
+        {/* Footer: Copyright */}
+            <footer className="py-5 bg-dark text-white-50">
+                <div className="container text-center">
+                    <Logo/>
+                    <p className="text-white fw-bold mt-2">QuickInvoice</p>
+                    <p className="mb-0">
+                         QuickInvoice. All Rights Reserved.
+                    </p>
+                    <p className="mb-0 small">
+                        Crafted with for freelancers and small businesses.
+                    </p>
+                    
+                </div>
+            </footer>
+
+        
+          </>
     )
 }
 
