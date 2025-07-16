@@ -1,6 +1,7 @@
 import {useState,useContext} from 'react';
 import {Pencil} from "lucide-react";
 import { AppContext } from '../../context/AppContext';
+import InvoiceForm from '../../components/InvoiceForm';
 
 const MainPage = () => {
  const[isEditingTitle, setIsEditingTitle] = useState(false);
@@ -19,7 +20,7 @@ const MainPage = () => {
 
 
  return (
-    <div className="container-fluid bg-light min-vh-100 py-4">
+    <div className="mainpage container-fluid bg-light min-vh-100 py-4">
       <div className="container">
         {/* Title Bar */}
         <div className="bg-white border rounded shadow-sm p-3 mb-4">
@@ -55,7 +56,7 @@ const MainPage = () => {
           {/* Invoice Form */}
           <div className="col-12 col-lg-6 d-flex">
             <div className="bg-white border fw-bold rounded shadow-sm p-4 w-100">
-             Invoice Form
+             <InvoiceForm/>
             </div>
           </div>
 
