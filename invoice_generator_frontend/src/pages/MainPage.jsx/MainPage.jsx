@@ -4,11 +4,11 @@ import { AppContext } from '../../context/AppContext';
 
 const MainPage = () => {
  const[isEditingTitle, setIsEditingTitle] = useState(false);
- const {invoiceTitle, setInvoicetitle} = useContext(AppContext);
+ const {invoiceTitle, setInvoiceTitle} = useContext(AppContext);
 
   const handleTitleChange  = (e) =>{
           const newtitle =e.target.value;
-          setInvoicetitle(newtitle);
+          setInvoiceTitle(newtitle);
   }
   const handleTitleEdit = () =>{
   setIsEditingTitle(true);
