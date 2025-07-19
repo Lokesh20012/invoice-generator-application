@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { templates } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 
 const TemplatGrid = () => {
+    const {selectTemplate, setSelectTemplate} = useContext(AppContext);
     return(
        <div className="row g-3">
         {

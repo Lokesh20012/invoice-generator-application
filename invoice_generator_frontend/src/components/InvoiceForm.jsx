@@ -1,9 +1,42 @@
 
+import { useContext } from 'react';
 import {assets} from '../assets/assets';
 import { Trash2 } from "lucide-react";
+import { AppContext} from '../context/AppContext';
 
 
 const InvoiceForm =()=>{
+
+    const{invoiceData, setInvoiceData} = useContext(AppContext);
+
+    const addItem = () => {
+        setInvoiceData((prev) => ({...prev,
+            items: [...prev.items,
+                 { name: "", qty: "", amount: "", description: "", total: 0}
+            ]
+        }))
+    }
+
+    const deleteItem = (index) => {
+     setInvoiceData( prev => ({...prev, items: invoiceData.items.filter((_ , i) => i!==index)}))
+    }
+
+
+    const handleChange = (section, field, value) =>{
+     setInvoiceData(prev =>({
+        ...prev, [section]:{
+            ...prev[section], [field]:value
+        }
+     }))
+    }
+
+    const handleSameAsBilling = () =>{
+        setInvoiceData(prev =>({
+            ...prev, shipping: {...prev.billing}
+        }))
+    }
+
+
     return(
         <div className="invoiceform container py-4">
             {/* company logo */}
@@ -22,13 +55,20 @@ const InvoiceForm =()=>{
                 <h5>Company Information</h5>
                 <div className="row g-3">
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Company Name' />
+                        <input type="text" className="form-control" placeholder='Company Name'
+                        onChange={(e) => handleChange("company", "name", e.target.value)}
+                         />
                     </div>
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Company Phone' />
+                        <input type="text" className="form-control" placeholder='Company Phone'
+                        onChange={(e) => handleChange("company", "phone", e.target.value)}
+                         />
                     </div>
                     <div className="col-md-12">
-                        <input type="text" className="form-control" placeholder='Company Address' />
+                        <input type="text" className="form-control" placeholder='Company Address' 
+                        onChange={(e) => handleChange("company", "address", e.target.value)}
+                         />
+                        
                     </div>
                 </div>
             </div>
@@ -37,13 +77,17 @@ const InvoiceForm =()=>{
                 <h5>Bill To</h5>
                 <div className="row g-3">
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Name' />
+                        <input type="text" className="form-control" placeholder='Name'
+                         onChange={(e) => handleChange("billing","name",e.target.value)}/>
+                         {invoiceData.billing.name}
                     </div>
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Phone Number' />
+                        <input type="text" className="form-control" placeholder='Phone Number'
+                         onChange={(e) => handleChange("billing","phone", e.target.value)} />
                     </div>
                     <div className="col-md-12">
-                        <input type="text" className="form-control" placeholder='Billing Address' />
+                        <input type="text" className="form-control" placeholder='Billing Address'
+                         onChange={(e) => handleChange("billing", "address", e.target.value)} />
                     </div>
                 </div>
             </div>
@@ -54,7 +98,7 @@ const InvoiceForm =()=>{
                 <div className="d-flex justify-content-between">
                     <h5>Ship to</h5>
                  <div className="form-check">
-                        <input type="checkbox" className='form-check-input' id="sameAsBill" />
+                        <input type="checkbox" className='form-check-input' id="sameAsBill" onChange={handleSameAsBilling} />
                         <label htmlFor="sameAsBill" className='form-check-label'>
                         Same As Bill
                         </label>
@@ -62,13 +106,17 @@ const InvoiceForm =()=>{
                 </div>
                 <div className="row g-3">
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Name' />
+                        <input type="text" className="form-control" placeholder='Name' 
+                        onChange={(e) => handleChange("shipping","name", e.target.value)}/>
                     </div>
                     <div className="col-md-6">
-                        <input type="text" className="form-control" placeholder='Phone Number' />
+                        <input type="text" className="form-control" placeholder='Phone Number'
+                        onChange={(e) => handleChange("shipping","phone", e.target.value)}/>
+                        
                     </div>
                     <div className="col-md-12">
-                        <input type="text" className="form-control" placeholder='Shipping Address' />
+                        <input type="text" className="form-control" placeholder='Shipping Address'
+                        onChange={(e) => handleChange("shipping","address", e.target.value)}/>
                     </div>
                 </div>
             </div>
@@ -95,7 +143,9 @@ const InvoiceForm =()=>{
             {/* Item details */}
             <div className="mb-4">
                 <h5>Item Details</h5>
-                <div className='card p-3 mb-3'>
+                {/* write map for ierate the invoicedata items and create every time new div for new items*/}
+                {invoiceData.items.map((item, index)=>(
+                <div key={index} className='card p-3 mb-3'>
                     <div className="row g-3 mb-2">
                         <div className="col-md-3">
                             <input type="text" placeholder='Item' className='form-control' />
@@ -110,15 +160,27 @@ const InvoiceForm =()=>{
                             <input type="number" placeholder='Total' className='form-control' />
                         </div>
                     </div>
+           {/* we can not use if codition in jsx, if there need we can use outside the rerutn   */}
+
 
                     <div className="d-flex gap-2 mb-2">
                         <textarea  className='form-control' placeholder='Description'/>
-                        <button className="btn btn-outline-danger" type='button'>
-                            <Trash2 size={17} />
+                        {/* write this expression, trash button will visisble when the items is more than one  */}
+
+
+                        {invoiceData.items.length >1 &&(
+                            // never use onClick={deleteItem(index) beacuase when componenet render deleteitme called
+                            // immediately due to this appcontect provider or parent component setInvoicedata. 
+                            // cannot update appcontext provider 
+                        <button className="btn btn-outline-danger" type='button' onClick={()=>deleteItem(index)}>
+                            <Trash2  size={17} />
                         </button>
+                        )
+}
                     </div> 
                 </div>
-                <button className="btn btn-primary" type='button'>Add Item</button>
+                ))}
+                <button className="btn btn-primary" type='button' onClick={addItem}>Add Item</button>
             </div>
             {/* bank acocunt */}
             <div className="mb-4">
