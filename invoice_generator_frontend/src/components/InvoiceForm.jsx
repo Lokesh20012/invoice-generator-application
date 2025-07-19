@@ -136,9 +136,35 @@ const InvoiceForm =()=>{
                 </div>
             </div>
             {/* tootal */}
-            <div className="mb-4"></div>
+            <div className="mb-4">
+                <div>
+                    <div className="w-100 w-md-50">
+                        <div className="d-flex justify-content-between">
+                            <span>SubTotal</span>
+                            <span>${1000}</span>
+                        </div>
+                        <div className="d-flex justify-content-between">
+                            <label htmlFor="tax" className='me-2'>Tax Rate 2%</label>
+                            <input type="number" id='tax' className='form-contol' placeholder='2' />
+                        </div>
+                        <div className="d-flex justify-content-between">
+                            <span>Tax Amount</span>
+                            <span>${1000}</span>
+                        </div>
+                        <div className="d-flex justify-content-between fw-bold mt-2">
+                            <span>Grand Total</span>
+                            <span>${1000}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {/* notes */}
-            <div className="mb-4"></div>
+            <div className="mb-4">
+                <h5>Notes</h5>
+                    <div w-5>
+                      <textarea name="notes" className='form-control' rows={3}> </textarea>
+                    </div> 
+            </div>
 
         </div>
     )
