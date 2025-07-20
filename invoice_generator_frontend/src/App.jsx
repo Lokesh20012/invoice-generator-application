@@ -15,7 +15,7 @@ const App =() =>{
     <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/generate" element={<MainPage/>}/>
+        <Route path="/mainPage" element={<MainPage/>}/>
         <Route path="/preview" element={<PreviewPage/>}/>
     </Routes>
     </BrowserRouter>

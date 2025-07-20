@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "./logo";
 
+
 const MenuBar = () => {
+
+
+  const navigate = useNavigate();
+
+  const generate= () => {
+    navigate("/mainPage")
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
       <div className="container py-2">
@@ -22,8 +30,8 @@ const MenuBar = () => {
               <Link className="nav-link fw-medium" to="/dashboard">Dashoard</Link>
             </li>
             <li className="nav-items">
-              <button className="nav-link fw-medium">
-                Generate
+              <button className="nav-link fw-medium" onClick={generate}>
+               Generate
               </button>
             </li>
             <li className="nav-item ms-lg-3 mt-2 mt-lg-0">

@@ -4,11 +4,11 @@ export const AppContext = createContext();
 
 export const intialInvoiceData = {
     title: "New invoice",
+    company: {name: "", number: "", address: ""},
     billing: {name: "", phone: "", address: ""},
     shipping: {name: "", phone: "", address: ""},
     invoice: {name: "", date: "", dueDate: ""},
     account: {name: "", number: "", ifscCode: ""},
-    company: {name: "", number: "", address: ""},
     tax: 0,
     notes: "",
     items: [
