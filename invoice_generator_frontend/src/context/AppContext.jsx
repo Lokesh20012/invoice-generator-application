@@ -3,11 +3,12 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export const intialInvoiceData = {
+    logo: "",
     title: "New invoice",
     company: {name: "", number: "", address: ""},
     billing: {name: "", phone: "", address: ""},
     shipping: {name: "", phone: "", address: ""},
-    invoice: {name: "", date: "", dueDate: ""},
+    invoice: {number: "", date: "", dueDate: ""},
     account: {name: "", number: "", ifscCode: ""},
     tax: 0,
     notes: "",
