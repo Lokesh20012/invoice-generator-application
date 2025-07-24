@@ -1,5 +1,5 @@
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {assets} from '../assets/assets';
 import { Trash2 } from "lucide-react";
 import { AppContext} from '../context/AppContext';
@@ -23,13 +23,12 @@ const InvoiceForm =()=>{
 
 
         const handleChange = (section, field, value) =>{
-        setInvoiceData(prev =>({
-            ...prev, section:{
-                ...prev.section, field:value
-            }
-        }))
+     setInvoiceData(prev =>({
+        ...prev, [section]:{
+            ...prev[section], [field]:value
         }
-
+     }))
+    }
         const handleSameAsBilling = () => {
         setInvoiceData(prev => ({
                 //  copy state of billing and if you override name use name:"Lokesh Saini" then it will alway Lokesh Saini
@@ -44,14 +43,14 @@ const InvoiceForm =()=>{
             // update the state of items element and if any change of qty and amount then total amount is updated
             //and (items[index].qty ||0) and (items[index]*amount ||0)  used 0 for handling error if write - value in fields
         const handleItemChange = (index, field, value) =>{
-            const items = [...invoiceData.items];
-            items[index][field] = value;
+            const updateItems = [...invoiceData.items];
+            updateItems[index]= {...[index], field:value}
             if(field === "qty" || field ==="amount"){
-                items[index].total = (items[index].qty ||0)*(items[index].amount ||0)
+                updateItems[index].total = (updateItems[index].qty ||0)*(updateItems[index].amount ||0)
             }
 
             setInvoiceData(prev =>({
-                ...prev, items
+                ...prev, items:updateItems
             }))
         }
 
@@ -68,21 +67,33 @@ const InvoiceForm =()=>{
 
 
 
-          const handleLogoUpload = (e) =>{
-                const file = e.target.files[0];
-                if(file){
-                    const reader = new FileReader();
-                    reader.onloadend = () =>{
-                        setInvoiceData(prev =>({
-                            ...prev, logo:reader.result
-                        }))
+              const handleLogoUpload = (e) =>{
+                    const file = e.target.files[0];
+                    if(file){
+                        const reader = new FileReader();
+                        reader.onloadend = () =>{
+                            setInvoiceData(prev =>({
+                                ...prev, logo:reader.result
+                            }))
+                        }
+                    
+                    reader.readAsDataUrl(file);
                     }
-                
-                reader.readAsDataUrl(file);
-                }
-           }
+               }
+
+
+           useEffect(() =>{
+            if(!invoiceData.invoice.number){
+               const randomNum = `INV-${Math.floor(10000 + Math.random() * 1000)}`;;
+               setInvoiceData(prev => ({
+                ...prev, invoice:{
+                    ...prev.invoice, number:randomNum
+                },
+               }))
+            }
+           }, [])
         
-          
+          console.log(invoiceData);
 
 return(
     <div className="invoiceform container py-4">

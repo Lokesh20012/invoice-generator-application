@@ -6,11 +6,14 @@ import TemplatGrid from '../../components/TemplateGrid';
 
 const MainPage = () => {
  const[isEditingTitle, setIsEditingTitle] = useState(false);
- const {invoiceTitle, setInvoiceTitle} = useContext(AppContext);
+ const {invoiceTitle, setInvoiceTitle, invoiceData, setInvoiceData} = useContext(AppContext);
 
   const handleTitleChange  = (e) =>{
           const newtitle =e.target.value;
           setInvoiceTitle(newtitle);
+          setInvoiceData(prev =>({
+            ...prev, title: newtitle
+          }));
   }
   const handleTitleEdit = () =>{
   setIsEditingTitle(true);
