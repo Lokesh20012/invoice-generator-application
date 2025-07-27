@@ -6,10 +6,9 @@ import { AppContext} from '../context/AppContext';
 
 
 const InvoiceForm =()=>{
-
+    
         const{invoiceData, setInvoiceData} = useContext(AppContext);
-
-        const addItem = () => {
+       const addItem = () => {
             setInvoiceData((prev) => ({...prev,
                 items: [...prev.items,
                     { name: "", qty: "", amount: "", description: "", total: 0}
@@ -23,9 +22,9 @@ const InvoiceForm =()=>{
 
 
         const handleChange = (section, field, value) =>{
-     setInvoiceData(prev =>({
-        ...prev, [section]:{
-            ...prev[section], [field]:value
+         setInvoiceData(prev =>({
+                ...prev, [section]:{
+                    ...prev[section], [field]:value
         }
      }))
     }
@@ -44,11 +43,12 @@ const InvoiceForm =()=>{
             //and (items[index].qty ||0) and (items[index]*amount ||0)  used 0 for handling error if write - value in fields
         const handleItemChange = (index, field, value) =>{
             const updateItems = [...invoiceData.items];
-            updateItems[index]= {...[index], field:value}
+            updateItems[index]= {...updateItems[index], [field]:value}
             if(field === "qty" || field ==="amount"){
                 updateItems[index].total = (updateItems[index].qty ||0)*(updateItems[index].amount ||0)
             }
-
+            console.log(`Item ${index} total:`, updateItems[index].total);
+            
             setInvoiceData(prev =>({
                 ...prev, items:updateItems
             }))
@@ -64,7 +64,6 @@ const InvoiceForm =()=>{
 
          }
          const{subTotal, taxAmount, grandTotal} = calculateTotal();
-
 
 
               const handleLogoUpload = (e) =>{
@@ -92,10 +91,12 @@ const InvoiceForm =()=>{
                }))
             }
            }, [])
-        
-          console.log(invoiceData);
+        const handle = () =>{
+     console.log(invoiceData);
+        }
+          
 
-return(
+    return(
     <div className="invoiceform container py-4">
         {/* company logo */}
         <div className="mb-4">
@@ -122,7 +123,7 @@ return(
                     />
                 </div>
                 <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder='Company Phone' value={invoiceData.company.number}
+                    <input type="text" className="form-control" placeholder='Company Phone' value={invoiceData.company.phone}
                     onChange={(e) => handleChange("company", "phone", e.target.value)}
                     />
                 </div>
@@ -322,7 +323,7 @@ return(
         {/* notes */}
         <div className="mb-4">
             <h5>Notes</h5>
-                <div w-5>
+                <div>
                 <textarea 
                     name="notes" 
                     className='form-control' 
@@ -333,9 +334,10 @@ return(
                         ...prev, notes:(e.target.value)
                         }))}> 
                 </textarea>
-                {invoiceData.notes}                        </div> 
-        </div>
-
+                {invoiceData.notes}   
+                </div> 
+        <button onClick={handle}>button</button>
+        </div>  
     </div>
 )
 }

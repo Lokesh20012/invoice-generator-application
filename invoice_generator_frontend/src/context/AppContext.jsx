@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const intialInvoiceData = {
     logo: "",
     title: "New invoice",
-    company: {name: "", number: "", address: ""},
+    company: {name: "", phone: "", address: ""},
     billing: {name: "", phone: "", address: ""},
     shipping: {name: "", phone: "", address: ""},
     invoice: {number: "", date: "", dueDate: ""},
@@ -22,7 +22,7 @@ export const AppContextProvider = ({children}) =>{
     
     const[invoiceTitle, setInvoiceTitle] = useState("Lokesh first Invoice");
     const[invoiceData, setInvoiceData] = useState(intialInvoiceData);
-    const[selectTemplate, setSelectTemplate] = useState("template1");
+    const[selectTemplate, setSelectTemplate] = useState("");
 
     const contextValue = {
         invoiceTitle,
