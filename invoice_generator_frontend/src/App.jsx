@@ -11,6 +11,8 @@ const App =() =>{
     return (
     <BrowserRouter>
     <MenuBar/>
+    {/*  used for success error notification for example toast.success('saved') */}
+    {/* neccessary to placed here */}
     <Toaster/>
     <Routes>
         <Route path="/" element={<LandingPage/>}/>

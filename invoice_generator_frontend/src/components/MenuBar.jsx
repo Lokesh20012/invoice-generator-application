@@ -3,24 +3,22 @@ import Logo from "./logo";
 
 
 const MenuBar = () => {
-
-
+  
   const navigate = useNavigate();
-
   const generate= () => {
     navigate("/mainPage")
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
       <div className="container py-2">
-        <Link className="navbar-brand d-flex align-items-center" to="/">
+        <Link className="navbar-brand d-flex" to="/">
           <Logo/>
           <span className="fw-bolder fs-4 mx-3" style={{ letterSpacing: '0.5px', color: '#0D6EFDB2' }}>
             QuickInvoice
           </span>
         </Link>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
+                
+        <div>
           <ul className="navbar-nav ms-auto align-items-center">
 
             <li className="nav-items">
