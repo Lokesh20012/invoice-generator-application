@@ -5,7 +5,7 @@ import InvoicePreview from "../../components/InvoicePreview";
 
 export const PreviewPage= () =>{
     const previewRef = useRef();
-    const {selectTemplate} = useContext(AppContext);
+    const {selectTemplate, invoiceData} = useContext(AppContext);
     return(
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
            
@@ -38,7 +38,7 @@ export const PreviewPage= () =>{
 
            <div className="flex-grow-1 overflow-auto d-flex justify-content-center align-items-center bg-light py-3">
               <div ref={previewRef} className="invoice-preview">
-                 <InvoicePreview/>
+                 <InvoicePreview invoiceData = {invoiceData}/>
               </div>
            </div>
 
