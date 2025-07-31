@@ -29,6 +29,11 @@ jobs:
       - name: Build frontend
         run: npm run build
 
+      - name: Configure Git identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
