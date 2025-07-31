@@ -1,6 +1,7 @@
 import { useContext, useRef } from "react";
 import { templates } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
+import InvoicePreview from "../../components/InvoicePreview";
 
 export const PreviewPage= () =>{
     const previewRef = useRef();
@@ -37,7 +38,7 @@ export const PreviewPage= () =>{
 
            <div className="flex-grow-1 overflow-auto d-flex justify-content-center align-items-center bg-light py-3">
               <div ref={previewRef} className="invoice-preview">
-                 Display the pdf preview
+                 <InvoicePreview/>
               </div>
            </div>
 

@@ -8,6 +8,9 @@ const MenuBar = () => {
   const generate= () => {
     navigate("/mainPage")
   }
+  const PreViewPageGenerate = () =>{
+    navigate("/preview")
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
       <div className="container py-2">
@@ -30,6 +33,11 @@ const MenuBar = () => {
             <li className="nav-items">
               <button className="nav-link fw-medium" onClick={generate}>
                Generate
+              </button>
+            </li>
+            <li className="nav-items">
+              <button className="nav-link fw-medium" onClick={PreViewPageGenerate}>
+               PreviewPage
               </button>
             </li>
             <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
