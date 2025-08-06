@@ -6,9 +6,12 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  frontend-deploy:
+    name: Deploy frontend sto GitHub Pages
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: invoice_generator_frontend
 
     steps:
       - name: Checkout repo
