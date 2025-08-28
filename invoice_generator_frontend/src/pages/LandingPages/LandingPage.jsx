@@ -9,10 +9,11 @@ const LandingPage = () => {
                 <div className="row py-lg-5">
                     <div className="col-lg-9 col-md-10 mx-auto">
                         <h1 className="display-3 fw-bold mb-4">
-                            Effortless Invoicing. Professional Results.
+                            Smart Billing. Seamless Experience.
+
                         </h1>
                         <p className="mb-5" style={{ color: "white", fontSize: '1.5rem' }}>
-                            Stop wrestling with spreadsheets. QuickInvoice helps you create and send beautiful invoices in minutes, so you get paid faster.
+                          Tired of struggling with invoices? SwiftInvoice streamlines billing with clean, ready-to-send invoices that not only look professional but also help you get paid faster.
                         </p>
                         <p>
                             <button className="btn btn-lg btn-warning fw-bold rounded-pill my-2 mx-1 px-5 py-3">

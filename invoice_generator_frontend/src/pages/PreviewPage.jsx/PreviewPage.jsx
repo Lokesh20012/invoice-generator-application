@@ -5,14 +5,15 @@ import InvoicePreview from "../../components/InvoicePreview";
 
 export const PreviewPage= () =>{
     const previewRef = useRef();
-    const {selectTemplate} = useContext(AppContext);
+    const {selectTemplate, invoiceData} = useContext(AppContext);
+
     return(
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
            
            {/* Action Button */}
            <div className="d-flex flex-column align-items-center w-100 mb-4 gap-3">
 
-                     {/* List of Tmeplate button */}
+                     {/* List of Template button */}
                     <div className="d-flex flex-wrap justify-content-center gap-2">
                         {templates.map(({id, label}) =>(
                             <button key = {id}
@@ -38,7 +39,7 @@ export const PreviewPage= () =>{
 
            <div className="flex-grow-1 overflow-auto d-flex justify-content-center align-items-center bg-light py-3">
               <div ref={previewRef} className="invoice-preview">
-                 <InvoicePreview/>
+                 <InvoicePreview invoiceData={invoiceData} template={selectTemplate}/>
               </div>
            </div>
 
