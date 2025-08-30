@@ -2,10 +2,12 @@ import { useContext, useRef } from "react";
 import { templates } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
 import InvoicePreview from "../../components/InvoicePreview";
+import { useNavigate } from "react-router-dom";
 
 export const PreviewPage= () =>{
+    const navigate = useNavigate();
     const previewRef = useRef();
-    const {selectTemplate, invoiceData} = useContext(AppContext);
+    const {selectTemplate, invoiceData, setSelectTemplate} = useContext(AppContext);
 
     return(
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
@@ -17,8 +19,15 @@ export const PreviewPage= () =>{
                     <div className="d-flex flex-wrap justify-content-center gap-2">
                         {templates.map(({id, label}) =>(
                             <button key = {id}
-                            className={`btn btn-sm rounded-pill p-2 ${selectTemplate === id ? 'btn-warning' : 'btn-outline-primary'}`}>
+                            className={`btn btn-sm rounded-pill p-2 ${selectTemplate === id ? 'btn-warning' : 'btn-outline-primary'}`}
+                            onClick = {
+                                () => {
+                                    setSelectTemplate(id);
+                                    navigate("/preview");
+                            }
+                        }>
                             {label}  
+
                             </button>
                         ))}
 

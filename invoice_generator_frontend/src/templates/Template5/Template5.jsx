@@ -80,8 +80,8 @@ const Template5 = ({ data }) => {
                                 <div className="text-muted small">{item.description}</div>
                             </td>
                             <td className="p-3 text-center">{item.qty}</td>
-                            <td className="p-3 text-center">{data.currencySymbol}{item.amount.toFixed(2)}</td>
-                            <td className="p-3 text-end">{data.currencySymbol}{(item.qty * item.amount).toFixed(2)}</td>
+                            <td className="p-3 text-center">{data.currencySymbol}{item.amount}</td>
+                            <td className="p-3 text-end">{data.currencySymbol}{item.qty * item.amount}</td>
                         </tr>
                     ))}
                     </tbody>

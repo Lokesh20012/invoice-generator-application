@@ -1,19 +1,21 @@
+import { forwardRef } from "react";
+import {formatInvoiceData}  from "../util/formatInvoiceData.js";
+import TemplateComponents  from "../util/TemplateComponents.js";
 
-import { forwardRef } from "react"
-import formatInvoiceData from "../util/formatInvoiceData";
-import TemplateComponents from "../util/TemplateComponents";
+const InvoicePreview = forwardRef(({ invoiceData, template }, ref) => {
+  const formattedData = formatInvoiceData(invoiceData);
 
-const InvoicePreview = forwardRef( ({invoiceData, template}, ref)=>{
-     const formattedData = formatInvoiceData(invoiceData);
+  const SelectedTemplate =
+    TemplateComponents[template] || TemplateComponents["template1"];
 
-     const SelectedTemplate = TemplateComponents[template] || TemplateComponents['Template1'];
-
-    return(
-        <div ref={ref} className="invoice-preview px-2 py-2 overflow-x-auto">
-         <SelectedTemplate data = {formattedData}/>
-        </div>
-    )
-}
-)
+  return (
+    <div
+      ref={ref}
+      className="invoice-preview container px-2 py-3 overflow-x-auto"
+    >
+      <SelectedTemplate data={formattedData} />
+    </div>
+  );
+});
 
 export default InvoicePreview;

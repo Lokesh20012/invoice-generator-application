@@ -1,45 +1,96 @@
-/* template1.css */
-
 .w-800 {
     max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .company-title {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1e293b; /* dark slate */
+    margin-bottom: 6px;
+    text-transform: uppercase;
 }
 
 .invoice-title {
-    color: #ea580c;
-    font-size: 28px;
-    font-weight: bold;
+    color: #0891b2; /* teal */
+    font-size: 30px;
+    font-weight: 800;
+    text-align: right;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #0891b2;
+    padding-bottom: 8px;
 }
 
 .billing-title {
-    color: #ea580c;
-    font-size: 16px;
-    font-weight: bold;
+    color: #0891b2;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-left: 4px solid #0891b2;
+    padding-left: 8px;
 }
 
-.orange-border {
-    border-color: #ea580c !important;
+.teal-border {
+    border: 2px solid #0891b2 !important;
+    border-radius: 6px;
 }
 
 .billing-box {
-    background-color: #fff7ed;
+    background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .table-header {
-    background-color: #ea580c !important;
-    color: white !important;
+    background: linear-gradient(90deg, #0891b2, #06b6d4);
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fafb;
 }
 
 .totals-box {
     font-size: 16px;
     font-weight: bold;
-    background-color: #fff7ed;
+    background-color: #ecfeff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: right;
+    margin-top: 15px;
+    border-top: 2px dashed #06b6d4;
 }
 
-.total-highlight,.template1 .company-title {
-    color: #ea580c;
+.total-highlight, .template1 .company-title {
+    color: #0891b2;
+    font-weight: 700;
+}
+
+.grand-total {
+    font-size: 20px;
+    font-weight: 800;
+    color: #06b6d4;
+    margin-top: 8px;
 }

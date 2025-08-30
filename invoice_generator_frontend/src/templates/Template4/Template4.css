@@ -1,32 +1,88 @@
+/* template4.css - Cyan Corporate Minimal Theme */
+
 .template4 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    color: #000;
+    background-color: #ffffff;
+    color: #111827; /* dark gray for better readability */
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .template4-company-name {
-    color: #00a9e0;
+    color: #275054; /* cyan accent */
     font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
 }
 
 .template4-title {
     font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #3f5157;
+    padding-bottom: 8px;
+    text-align: right;
+    color: #38535c;
+}
+
+.template4-subheading {
+    font-size: 14px;
+    color: #374151; /* slate gray */
+    margin-bottom: 10px;
+}
+
+.template4-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .template4-table-head {
-    background-color: #00a9e0 !important;
-    color: #fff !important;
+    background-color: #f4c16f !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.template4-table th, 
+.template4-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.template4-table tr:nth-child(even) {
+    background-color: #f9fafb;
 }
 
 .template4-totals-box {
     max-width: 400px;
+    margin-left: auto;
+    background: #f0f9ff;
+    padding: 12px;
+    border-radius: 8px;
+    border-top: 2px dashed #00a9e0;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .template4-total-due {
-    background-color: #00a9e0;
+    background-color: #4e2e2e11;
     color: white;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .template4-primary-color {

@@ -1,8 +1,15 @@
-import './template1.css';
+import "./Template1.css";
 
-const Template1  = (data) =>{
-    return(
-       <div className="template1 border rounded mx-auto my-4 px-2 px-sm-4 py-3 w-800">
+const Template1 = ({ data }) => {
+  const subtotal = data.items.reduce(
+    (acc, item) => acc + item.qty * item.amount,
+    0
+  );
+  const taxAmount = (subtotal * parseFloat(data.tax || 0)) / 100;
+  const total = subtotal + taxAmount;
+
+  return (
+    <div className="template1 border rounded mx-auto my-4 px-2 px-sm-4 py-3 w-800">
       {/* Header Section */}
       <div className="row mb-4">
         <div className="col-md-6 mb-3 mb-md-0">
@@ -74,13 +81,13 @@ const Template1  = (data) =>{
               </tr>
             </thead>
             <tbody>
-              {data.items.map((item, index) => (
+              {data?.items?.map((item, index) => (
                 <tr key={index}>
                   <td className="p-2">{item.name}</td>
                   <td className="p-2 text-center">{item.qty}</td>
-                  <td className="p-2 text-end">₹{item.amount?.toFixed(2)}</td>
+                  <td className="p-2 text-end">₹{item.amount}</td>
                   <td className="p-2 text-end">
-                    ₹{(item.qty * item.amount).toFixed(2)}
+                    ₹{(item.qty * item.amount)}
                   </td>
                 </tr>
               ))}
@@ -95,17 +102,17 @@ const Template1  = (data) =>{
           <div className="p-3 w-100 totals-box" style={{ maxWidth: "300px" }}>
             <div className="d-flex justify-content-between mb-2">
               <span>Sub Total:</span>
-              <span>₹{data.subTotal.toFixed(2)}</span>
+              <span>₹{subtotal.toFixed(2)}</span>
             </div>
             {data.tax > 0 && (
               <div className="d-flex justify-content-between mb-2">
                 <span>Tax ({data.tax}%):</span>
-                <span>₹{data.taxAmount.toFixed(2)}</span>
+                <span>₹{taxAmount.toFixed(2)}</span>
               </div>
             )}
             <div className="d-flex justify-content-between fw-bold total-highlight">
               <span>Total:</span>
-              <span>₹{data.total.toFixed(2)}</span>
+              <span>₹{total.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -142,6 +149,6 @@ const Template1  = (data) =>{
       )}
     </div>
   );
-}
+};
 
 export default Template1;

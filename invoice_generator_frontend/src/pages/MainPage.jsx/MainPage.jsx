@@ -1,9 +1,11 @@
 import {useState,useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 import {Pencil} from "lucide-react";
 import { AppContext } from '../../context/AppContext';
 import InvoiceForm from '../../components/InvoiceForm';
 import TemplatGrid from '../../components/TemplateGrid';
 import toast from "react-hot-toast";
+import PreviewPage from '../PreviewPage.jsx/PreviewPage';
 
 
 const MainPage = () => {
@@ -11,6 +13,7 @@ const MainPage = () => {
       const {invoiceTitle, setInvoiceTitle, invoiceData, setInvoiceData,
         setSelectTemplate,   
       } = useContext(AppContext);
+        const navigate = useNavigate();
 
       const handleTemlpateClick = (id)=>{
         const validationMessage = invoiceData.items.some(
@@ -21,6 +24,7 @@ const MainPage = () => {
                 toast.error("Please enter qty or amount before selecting the template");
               }
         setSelectTemplate(id);
+        navigate("/preview");
         console.log(id);
       }
     

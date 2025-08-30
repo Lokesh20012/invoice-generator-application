@@ -9,12 +9,12 @@ import{Toaster} from "react-hot-toast"
 
 const App =() =>{
     return (
-    <BrowserRouter>
+    <BrowserRouter basename="/invoice-generator-application">
     <MenuBar/>
     {/*  used for success error notification for example toast.success('saved') */}
     {/* neccessary to placed here */}
     <Toaster/>
-    <Routes>
+    <Routes >
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/mainPage" element={<MainPage/>}/>

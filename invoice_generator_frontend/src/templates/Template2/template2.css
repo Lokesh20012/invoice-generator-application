@@ -1,19 +1,75 @@
-/* template2.css */
+/* template2.css - Cool Corporate Theme */
+
 .template2-wrapper {
-    background-color: #ffffff;
+    background-color: #f9fafb; /* soft gray background */
     font-size: 0.95rem;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .notes-section {
-    background-color: #f0fdf4;
-    border-top: 3px solid #22c55e;
+    background-color: #e0f2fe; /* light blue tint */
+    border-top: 3px solid #0284c7; /* sky blue accent */
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #0f172a;
 }
 
 .template2 .company-title {
-    color: #198754;
+    color: #0f172a; /* deep slate */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.template2 .invoice-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0284c7; /* bright sky blue */
+    text-align: right;
+    border-bottom: 3px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
 }
 
 .template2 .template2-table-header {
-    background-color: #198754 !important;
-    color: white !important;
+    background: linear-gradient(90deg, #0284c7, #0ea5e9); /* blue gradient */
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.template2 table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.template2 th, 
+.template2 td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.template2 tr:nth-child(even) {
+    background-color: #f1f5f9; /* subtle zebra rows */
+}
+
+.template2 .totals-box {
+    background: #e0f2fe;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    border-top: 2px dashed #0284c7;
+    color: #0284c7;
 }

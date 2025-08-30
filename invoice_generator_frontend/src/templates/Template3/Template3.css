@@ -1,31 +1,81 @@
+/* template3.css - Green Luxe Theme */
+
 .template3-container {
     max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .template3-heading {
-    color: #8a3ff3;
+    color: #059669; /* emerald green */
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
 }
 
 .template3-subheading {
-    color: #8a3ff3;
+    color: #047857; /* deep green */
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
 .template3-bill-box {
-    background-color: #f5f0ff;
+    background-color: #ecfdf5; /* soft mint */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #059669;
 }
 
 .template3-table-header {
-    background-color: #8a3ff3 !important;
-    color: white !important;
+    background: linear-gradient(90deg, #059669, #047857) !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.template3 table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.template3 th, 
+.template3 td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.template3 tr:nth-child(even) {
+    background-color: #f9fafb;
 }
 
 .template3-total-box {
     width: 100%;
     max-width: 300px;
+    background: #ecfdf5;
+    padding: 12px;
+    border-radius: 8px;
+    border-top: 2px dashed #059669;
+    text-align: right;
+    margin-left: auto;
 }
 
-.template3-total,.template3 .company-title {
-    color: #8a3ff3;
+.template3-total, 
+.template3 .company-title {
+    color: #059669;
+    font-weight: 700;
+}
+
+.template3-grand-total {
+    font-size: 18px;
+    font-weight: 800;
+    color: #047857;
 }

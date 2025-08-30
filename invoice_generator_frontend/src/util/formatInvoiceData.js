@@ -1,59 +1,62 @@
-
-const formatInvoiceData = (invoiceData) =>{
-
-const {
+export const formatInvoiceData = (invoiceData) => {
+    const {
         title,
         company = {},
         invoice = {},
         account = {},
         billing = {},
         shipping = {},
-        tax = {},
+        tax = 0,
         notes = "",
         items = [],
-        logo = "",
+        logo = ""
+    } = invoiceData || {};
 
-        } = invoiceData || {};
+    const currencySymbol = "₹";
+    const subtotal = items.reduce((acc, item) => acc + (item.qty * item.amount), 0) ;
+    const taxAmount = subtotal * (tax / 100);
+    const total = subtotal + taxAmount;
 
-const currencySymbol = "&";
-const subTotal = items.reduce((acc, item) => acc + (item.qty * item.amount), 0);
-const taxAmount = subTotal *(tax / 100);
-const total = subTotal + taxAmount;
+    return {
+        title,
+        companyName: company.name,
+        companyAddress: company.address,
+        companyPhone: company.phone,
+        companyLogo: logo,
 
-return{
+        invoiceNumber: invoice.number,
+        invoiceDate: invoice.date,
+        paymentDate: invoice.dueDate,
 
-    title,
-    companyName: company.name ,
-    companyPhone: company.phone,
-    companyAddress: company.address,
+        accountName: account.name,
+        accountNumber: account.number,
+        accountIfscCode: account.ifsccode,
 
-    invoiceNumber: invoice.number,
-    invoiceDate: invoice.date,
-    paymentData: invoice.dueDate,
+        billingName: billing.name,
+        billingAddress: billing.address,
+        billingPhone: billing.phone,
 
-    accountName: account.name,
-    accountNumber: account.number,
-    accountIFSC: account.ifscCode,
+        shippingName: shipping.name,
+        shippingAddress: shipping.address,
+        shippingPhone: shipping.phone,
 
-    billingName: billing.name,
-    billingPhone: billing.phone,
-    billingAddress: billing.address,
+        currencySymbol,
+        tax,
+        items,
+        notes,
+        subtotal,
+        taxAmount,
+        total
+    };
+};
 
-    shippingName: shipping.name,
-    shippingPhone: shipping.phone,
-    shippingAddress: shipping.address,
+export const formatDate = (dateStr) => {
+  if (!dateStr) return "N/A";
 
-    currencySymbol,
-    tax,
-    notes,
-    items,
-    logo,
-    subTotal,
-    taxAmount,
-    total
-}
-
-
-}
-
-export default formatInvoiceData;
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
