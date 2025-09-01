@@ -3,6 +3,10 @@ package com.lokesh.QuickInvoice.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.lokesh.QuickInvoice.entity.Invoice;
 import com.lokesh.QuickInvoice.service.InvoiceService;
@@ -10,18 +14,25 @@ import com.lokesh.QuickInvoice.service.InvoiceService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/api/invoices")
-public class InvoiceController {
 
+@RequestMapping("/api/invoices")
+@CrossOrigin(origins = "http://localhost:5173")
+public class InvoiceController {
+    
 	private final InvoiceService invoiceService;
-	
-	public ResponseEntity<Invoice>  saveInvoice(Invoice invoice){
-		return ResponseEntity.ok(invoiceService.saveInvoice(invoice));
+	public InvoiceController(InvoiceService invoiceService) {
+		this.invoiceService = invoiceService;
 	}
 	
 	
+	@GetMapping("/i")
+	public String hello() {
+		return "Success";
+	}
 	
 	
-
+	@PostMapping("/")
+	public ResponseEntity<Invoice>  saveInvoice(@RequestBody Invoice invoice){
+		return ResponseEntity.ok(invoiceService.saveInvoice(invoice));
+	}
 }

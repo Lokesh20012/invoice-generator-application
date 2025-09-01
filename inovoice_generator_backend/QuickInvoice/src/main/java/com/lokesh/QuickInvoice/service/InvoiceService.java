@@ -7,16 +7,19 @@ import com.lokesh.QuickInvoice.repository.InvoiceRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@Service
-@RequiredArgsConstructor
-public class InvoiceService {
 
-	private final InvoiceRepository invoiceRepository;
-	
-	public Invoice saveInvoice(Invoice invoice) {
-		return invoiceRepository.save(invoice);
-		
-		}
+@Service
+public class InvoiceService {
+    
+    private final InvoiceRepository invoiceRepository;
+    public InvoiceService(InvoiceRepository invoiceRepository) {
+        this.invoiceRepository= invoiceRepository;
+    }
+
+
+    public Invoice saveInvoice(Invoice invoice) {
+        return invoiceRepository.save(invoice);
+    }
 	
 
 }
