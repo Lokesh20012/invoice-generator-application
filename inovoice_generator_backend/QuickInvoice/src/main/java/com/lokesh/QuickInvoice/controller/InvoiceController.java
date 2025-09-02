@@ -1,5 +1,7 @@
 package com.lokesh.QuickInvoice.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +36,9 @@ public class InvoiceController {
 	@PostMapping("/")
 	public ResponseEntity<Invoice>  saveInvoice(@RequestBody Invoice invoice){
 		return ResponseEntity.ok(invoiceService.saveInvoice(invoice));
+	}
+	
+	public ResponseEntity<List<Invoice>> fetchInvoices(){
+		return ResponseEntity.ok(invoiceService.fetchInvoice());
 	}
 }

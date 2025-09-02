@@ -43,7 +43,7 @@ export const PreviewPage= () =>{
 
             const payload ={
                 ...invoiceData,
-                
+                thumbnailUrl,
                 template: selectTemplate
             };
             const response = await saveInvoice(baseURL, payload);

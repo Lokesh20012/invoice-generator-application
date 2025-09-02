@@ -6,6 +6,7 @@ import com.lokesh.QuickInvoice.entity.Invoice;
 import com.lokesh.QuickInvoice.repository.InvoiceRepository;
 
 import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 
 @Service
@@ -20,6 +21,8 @@ public class InvoiceService {
     public Invoice saveInvoice(Invoice invoice) {
         return invoiceRepository.save(invoice);
     }
-	
-
+    
+    public List<Invoice> fetchInvoice(){
+	return invoiceRepository.findAll();
+    }
 }

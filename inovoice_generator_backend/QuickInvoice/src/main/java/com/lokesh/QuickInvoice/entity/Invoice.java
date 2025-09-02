@@ -33,7 +33,6 @@ public class Invoice {
     private String template;
     private String title;
 
-    // --------- Getters & Setters ---------
 
     public String getId() {
         return id;
