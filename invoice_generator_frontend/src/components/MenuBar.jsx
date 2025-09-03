@@ -6,7 +6,7 @@ const MenuBar = () => {
   
   const navigate = useNavigate();
   const generate= () => {
-    navigate("/mainPage")
+    navigate("/generate")
   }
   
   return (

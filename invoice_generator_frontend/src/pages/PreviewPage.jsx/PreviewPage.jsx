@@ -3,7 +3,7 @@ import { templates } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
 import InvoicePreview from "../../components/InvoicePreview";
 import { useNavigate } from "react-router-dom";
-import { saveInvoice}  from "../../service/invoiceService";
+import { saveInvoice, deleteInvoice}  from "../../service/invoiceService";
 import {uploadInvoiceThumbnail} from '../../service/cloudinaryService';
 import { toast } from "react-hot-toast"; 
 import { Loader2, Scale } from "lucide-react";
@@ -66,6 +66,27 @@ export const PreviewPage= () =>{
         }
 
     }
+
+    const handleDeleteInvoice = async() =>{
+        console.log(invoiceData.id);
+        if(!invoiceData.id){
+            toast.success("Invoice deleted successfully");
+            navigate("/dashboard");
+        }
+        const response = await deleteInvoice(baseURL, invoiceData.id); 
+        try{
+            if(response.status === 200){
+                toast.success("Invoice deleted successfully");
+                navigate("/dashboard");
+            }
+            else{
+                toast.error("failed to delete invoice");
+            }
+        }
+        catch(error){
+            toast.error("failed to delete invoice", error.message);
+        }
+    }
     return(
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
            
@@ -97,7 +118,7 @@ export const PreviewPage= () =>{
                             {loading && <Loader2 className="me-2 spin-animation" size ={18} />}
                             {loading? "saving..." : "Save & exit"}
                         </button>
-                        <button className="btn btn-danger">Delete Invoice</button>
+                        <button className="btn btn-danger" onClick = {handleDeleteInvoice}>Delete Invoice</button>
                         <button className="btn btn-secondary"> Back to Dashboard</button>
                         <button className="btn btn-info"> Send Email</button>
                         <button className="btn btn-success d-flex align-items-center justify-content-center"> Download</button>

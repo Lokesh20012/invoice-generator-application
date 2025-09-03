@@ -23,6 +23,7 @@ export const AppContextProvider = ({children}) =>{
     const[invoiceTitle, setInvoiceTitle] = useState("Lokesh first Invoice");
     const[invoiceData, setInvoiceData] = useState(intialInvoiceData);
     const[selectTemplate, setSelectTemplate] = useState("");
+    const[invoiceId, setInvoiceId] = useState("");
 
     const baseURL = "http://localhost:8082/api";
 
@@ -32,7 +33,8 @@ export const AppContextProvider = ({children}) =>{
         invoiceData, setInvoiceData,
         selectTemplate, setSelectTemplate,
         intialInvoiceData,
-        baseURL
+        baseURL,
+        invoiceId, setInvoiceId
     }
     
     return(
