@@ -8,6 +8,7 @@ import {uploadInvoiceThumbnail} from '../../service/cloudinaryService';
 import { toast } from "react-hot-toast"; 
 import { Loader2, Scale } from "lucide-react";
 import html2canvas from "html2canvas";
+import generatedPdf from "../../util/pdfUtils.js"
 
 
 export const PreviewPage= () =>{
@@ -15,6 +16,7 @@ export const PreviewPage= () =>{
     const previewRef = useRef();
     const {selectTemplate, invoiceData, setSelectTemplate, baseURL} = useContext(AppContext);
     const [loading, setLoading] = useState(false);
+    const[downloading, setDownloading] = useState(false);
    
     const handleSaveExit = async() =>{
         try{
@@ -87,6 +89,36 @@ export const PreviewPage= () =>{
             toast.error("failed to delete invoice", error.message);
         }
     }
+   
+    const handleDownloadPdf = async() =>{
+        if(!previewRef.current) return;
+        try{
+        setDownloading(true);
+        await generatedPdf(previewRef.current, `invoice_${Date.now()}.pdf`);
+    }
+
+    catch(error){
+        toast.error("failed to download pdf", error.message);
+    }
+    finally{
+        setDownloading(false);
+    }
+}
+
+    // for sending invoice pdf to email
+    const handleSendEmailPdf = async() =>{
+        const response = await sendInvoicePdfEmail(baseURL, );
+        try{
+            if(response.status ===200){
+                toast.success("PDF sent to your email successfully");
+                navigate("/dashboard");
+            }
+        }
+        catch(error){
+            toast.error("failed to send pdf on EMail", error.message)
+        }
+    }
+
     return(
         <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
            
@@ -119,9 +151,13 @@ export const PreviewPage= () =>{
                             {loading? "saving..." : "Save & exit"}
                         </button>
                         <button className="btn btn-danger" onClick = {handleDeleteInvoice}>Delete Invoice</button>
-                        <button className="btn btn-secondary"> Back to Dashboard</button>
-                        <button className="btn btn-info"> Send Email</button>
-                        <button className="btn btn-success d-flex align-items-center justify-content-center"> Download</button>
+                        <button className="btn btn-secondary" onClick = {() =>{navigate("/dashboard")}}> Back to Dashboard</button>
+                        <button className="btn btn-info" onClick={handleSendEmailPdf}> Send Email</button>
+                        <button className="btn btn-success d-flex align-items-center justify-content-center" disabled={loading}
+                          onClick={handleDownloadPdf}>
+                             {downloading && (<loading className="me-2 spin-animation" size={18} />)}
+                             {downloading ? "Downloading" : "Download PDF"}
+                             </button>
                     </div>
              
             </div>
