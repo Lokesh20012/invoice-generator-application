@@ -1,6 +1,6 @@
 import './Dashboard';
 import {useState, useContext, useEffect} from 'react';
-import { AppContext} from "../../context/AppContext";
+import { AppContext, intialInvoiceData} from "../../context/AppContext";
 import { getAllInvoices } from '../../service/invoiceService';
 import {toast} from 'react-hot-toast';
 import { Plus } from 'lucide-react';    
@@ -12,7 +12,7 @@ const Dashboard = () =>{
 
     const[invoices, setInvoices] = useState([]);
     
-    const { baseURL, setInvoiceData, setInvoiceTitle, setSelectTemplate, setInvoiceId } = useContext(AppContext);
+    const { baseURL, setInvoiceData, setInvoiceTitle, setSelectTemplate} = useContext(AppContext);
     const navigate = useNavigate();
     
     
@@ -34,14 +34,15 @@ const Dashboard = () =>{
             }, [baseURL]);
 
             const handleViewClick = (invoice)=>{
-               
-                setInvoiceData(initialInvoiceData); 
+                console.log(invoice.id);
+                setInvoiceData(invoice); 
                 setSelectTemplate(invoice.template);
                 setInvoiceTitle(invoice.title);
                 navigate('/preview');
             }
 
             const handleCreateNew = () =>{
+              setInvoiceData(intialInvoiceData);
               setInvoiceTitle("Create New Invoice");
               navigate('/generate');
 

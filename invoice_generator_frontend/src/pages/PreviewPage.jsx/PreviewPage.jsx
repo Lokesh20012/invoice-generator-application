@@ -75,7 +75,7 @@ export const PreviewPage= () =>{
         }
         const response = await deleteInvoice(baseURL, invoiceData.id); 
         try{
-            if(response.status === 200){
+            if(response.status === 204 || response.status === 200){
                 toast.success("Invoice deleted successfully");
                 navigate("/dashboard");
             }
