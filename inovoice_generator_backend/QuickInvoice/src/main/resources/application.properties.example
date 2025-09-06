@@ -1,0 +1,11 @@
+server.port=8082
+spring.data.mongodb.url = mongodb://localhost:27017/invoicedb
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=yourusername
+spring.mail.password= your password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.protocol= smtp
+spring.mail.properties.mail.smtp.from= yourusername
