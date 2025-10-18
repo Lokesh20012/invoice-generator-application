@@ -14,13 +14,17 @@ import generatedPdf from "../../util/pdfUtils.js";
 export const PreviewPage= () =>{
     const navigate = useNavigate();
     const previewRef = useRef();
-    const {selectTemplate, invoiceData, setSelectTemplate, baseURL} = useContext(AppContext);
+    const {selectTemplate, invoiceData,setInvoiceData, setSelectTemplate, baseURL} = useContext(AppContext);
     const [loading, setLoading] = useState(false);
     const[downloading, setDownloading] = useState(false);
     const [showModal, setShowModal] = useState(false);  
     const [customerEmail, setCustomerEmail] = useState("");
     const [emailing, setEmailing] = useState(false);   
-   
+     
+
+    const handleEditInvoice = ()=>{
+        navigate("/generate");
+    }
     const handleSaveExit = async() =>{
         try{
             setLoading(true);
@@ -161,11 +165,13 @@ export const PreviewPage= () =>{
 
                     {/* List of action button */}
                     <div className="d-flex flex-wrap justify-content-center gap-2">
+                        <button className="btn btn-primary" onClick={handleEditInvoice}>Edit Invoice</button>
                         <button className="btn btn-primary d-flex align-items-center justify-content-center" 
                         onClick = {handleSaveExit} disabled = {loading}>
                             {loading && <Loader2 className="me-2 spin-animation" size ={18} />}
                             {loading? "saving..." : "Save & exit"}
                         </button>
+                        
                         <button className="btn btn-danger" onClick = {handleDeleteInvoice}>Delete Invoice</button>
                         <button className="btn btn-secondary" onClick = {() =>{navigate("/dashboard")}}> Back to Dashboard</button>
                         <button className="btn btn-info" onClick={() => setShowModal(true)}> Send Email</button>
