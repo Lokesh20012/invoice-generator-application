@@ -8,8 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
+
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
 
 
 
@@ -19,11 +22,14 @@ public class JwtUtils {
 	@Value("${jwt.secret}")
 	private String jwtSecret;
 	
-	@Value("{jwt.expirationMs}")
+	@Value("${jwt.expirationMs}")
 	private int jwtExpirationMs;
 	
-	private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+	
+
+    private SecretKey getSigningKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 	
 	//generate Token
@@ -36,8 +42,31 @@ public class JwtUtils {
                 .compact();
     }
 	
-	//Extract token
+	//Extract username
+	
+	public String getUsernameFromJwtToken(String token) {
+		return Jwts.parserBuilder()
+		        .setSigningKey(getSigningKey())
+		        .build()
+		        .parseClaimsJws(token)
+		        .getBody()
+		        .getSubject();
+    }
 	
 	
+	// Validate token
+	
+	public boolean validateJwtToken(String authToken) {
+	    try {
+	        Jwts.parserBuilder()
+	            .setSigningKey(getSigningKey())
+	            .build()
+	            .parseClaimsJws(authToken);
+	        return true;
+	    } catch (JwtException e) {
+	        System.out.println("Invalid JWT: " + e.getMessage());
+	    }
+	    return false;
+	}
 
 }
